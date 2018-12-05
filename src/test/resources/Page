@@ -1,0 +1,22 @@
+package pages;
+
+import org.openqa.selenium.WebDriver;
+
+public class HomePage implements IPage {
+	WebDriver driver;
+	
+	public HomePage(WebDriver driver) {
+		this.driver = driver;
+	}
+	public String Url = "http://live.guru99.com/";
+	public String Title = "Home page";
+
+	public String getTitle() {
+		return this.Title;
+	}
+
+	public void open() {
+		// TODO Auto-generated method stub
+		driver.get(this.Url);
+	}
+}
