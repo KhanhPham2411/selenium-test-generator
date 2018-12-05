@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.fasterxml.jackson.core.JsonGenerationException;
+import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -34,11 +35,19 @@ public class TestGenerator extends BaseTestCaseWithLogin {
     }
     
     @Test
-    public void Generate(){
-    	
+    public void Generate() throws JsonParseException, JsonMappingException, IOException{
+    	List<Page> pageList;
+        ObjectMapper mapper = new ObjectMapper();
+        pageList = mapper.readValue(new File("E:\\Temp\\data.json"), new TypeReference<List<Page>>(){});
+
+        TemplateGenerator template = new TemplateGenerator();
+        template.generatePages(pageList);
     }
 
    
+
+
+
 
     @Test
     public void Test() throws IOException {
